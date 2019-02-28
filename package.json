@@ -1,0 +1,40 @@
+{
+  "name": "electron-window-shortcut",
+  "version": "1.0.0",
+  "description": "Create BrowserWindow based Shortcut in Electron App Again",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syed-Umair/electron-window-shortcut.git"
+  },
+  "author": "Syed Umair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Syed-Umair/electron-window-shortcut/issues"
+  },
+  "homepage": "https://github.com/Syed-Umair/electron-window-shortcut#readme",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "echo 'test cases coming soon...'"
+  },
+  "keywords": [
+    "BrowserWindow",
+    "Shortcut",
+    "Electron",
+    "Accelerators",
+    "KeyBoard",
+    "Keys",
+    "Combinations",
+    "KeyPress"
+  ],
+  "dependencies": {
+    "electron-is-accelerator": "^0.1.2",
+    "keyboardevent-from-electron-accelerator": "^1.1.0",
+    "keyboardevents-areequal": "^0.2.2"
+  }
+}
