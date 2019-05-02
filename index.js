@@ -50,28 +50,32 @@ const inputEventHandler = (event, input) => {
     });
 };
 
-export const register = (accelerator, cb) => {
+const register = (accelerator, cb) => {
+    if (Array.isArray(accelerator)){
+        accelerator.forEach(accelerator => register(accelerator, cb));
+        return;
+    }
     if(isValidAccelerator(accelerator) && typeof cb === 'function') {
         acceleratorKeyEventMap.set(accelerator, toKeyEvent(accelerator));
         acceleratorCallbackMap.set(accelerator, cb);
     }
 };
 
-export const unregister = (accelerator) => {
+const unregister = (accelerator) => {
     if(isValidAccelerator(accelerator)) {
         acceleratorKeyEventMap.delete(accelerator);
         acceleratorCallbackMap.delete(accelerator);
     }
 };
 
-export const attachToWindow = (win) => {
-    if (win.webContents) {
-        win.webContents.on('before-input-event', inputEventHandler);
+const attachToWebContent = (webContents) => {
+    if (webContents) {
+        webContents.on('before-input-event', inputEventHandler);
     }
 };
 
 module.exports = {
     register,
     unregister,
-    attachToWindow
+    attachToWebContent
 };
