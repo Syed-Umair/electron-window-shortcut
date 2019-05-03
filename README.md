@@ -15,7 +15,7 @@ A Node.js Module for electron apps to bring back the browser window based shortc
 const {
     register,
     unregister,
-    attachToWindow
+    attachToWebContent
 } = require('electron-window-shortcut');
 
 register('Command+G', (event)=>{
@@ -25,5 +25,5 @@ register('Command+G', (event)=>{
 
 unregister('Command+G');
 
-attachToWindow(browserWindowInstance);
+attachToWebContent(webContent);
 ```
