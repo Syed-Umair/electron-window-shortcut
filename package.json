@@ -1,6 +1,6 @@
 {
   "name": "electron-window-shortcut",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lets make BrowserWindow based Shortcut in Electron App great again",
   "main": "index.js",
   "repository": {
