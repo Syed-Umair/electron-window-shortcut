@@ -12,25 +12,6 @@ const acceleratorKeyEventMap = new Map();
 const acceleratorCallbackMap = new Map();
 const webContentsMap = new Map();
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
-function debounce(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
-}
-
 const toStandardKeyEvent = (input) => {
 	const standardKeyEvent = {
 		code: input.code,
@@ -76,7 +57,6 @@ const register = (accelerator, cb) => {
         return;
     }
     if(isValidAccelerator(accelerator) && typeof cb === 'function') {
-        cb = debounce(cb, 300);
         acceleratorKeyEventMap.set(accelerator, toKeyEvent(accelerator));
         acceleratorCallbackMap.set(accelerator, cb);
     }
@@ -90,9 +70,9 @@ const unregister = (accelerator) => {
 };
 
 const attachToWebContent = (webContents) => {
-    let pid = webContents.getOSProcessId();
-    if (webContents && !webContentsMap.has(pid)) {
-        webContentsMap.set(pid, Date.now());
+    let id = webContents.id;
+    if (webContents && !webContentsMap.has(id)) {
+        webContentsMap.set(id, Date.now());
         webContents.on('before-input-event', inputEventHandler);
     }
 };
