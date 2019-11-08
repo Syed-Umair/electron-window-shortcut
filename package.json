@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "electron-is-accelerator": "^0.1.2",
-    "keyboardevent-from-electron-accelerator": "^1.1.0",
+    "keyboardevent-from-electron-accelerator": "^2.0.0",
     "keyboardevents-areequal": "^0.2.2"
   }
 }
